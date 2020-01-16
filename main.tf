@@ -139,6 +139,16 @@ resource "azurerm_virtual_machine" "vm" {
     password = "Password1234!"
   }
 
+  provisioner "file" {
+  source      = "Dockerfile"
+  destination = "Dockerfile"
+}
+
+provisioner "file" {
+  source      = "sample.war"
+  destination = "sample.war"
+}
+
   provisioner "remote-exec" {
     inline = [
       # Build Essentials
@@ -148,6 +158,8 @@ resource "azurerm_virtual_machine" "vm" {
       "sudo apt-get install make -y",
       "sudo apt-get install openjdk-8-jdk openjdk-8-jre -y",
       "sudo apt-get install git maven docker.io -y",
+      "sudo docker build -t app:0.0.1 .",
+      "sudo docker run -d -p 8080:8080 app:0.0.1",
     ]
   }
 }
