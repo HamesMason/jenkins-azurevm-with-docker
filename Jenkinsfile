@@ -18,6 +18,7 @@ pipeline {
 
  steps {
  sh ‘terraform init’
+ sh 'mkdir plan'
  sh ‘terraform plan -out=plan’
  // sh ‘terraform destroy -auto-approve’
  sh ‘terraform apply plan’
