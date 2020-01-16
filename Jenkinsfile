@@ -10,18 +10,18 @@ pipeline {
 
  stage('Set Terraform path') {
  steps {
-  sh ‘terraform — version’
+  sh 'terraform — version'
   }
  }
 
  stage('Provision infrastructure') {
 
  steps {
- sh ‘terraform init’
+ sh 'terraform init'
  sh 'mkdir plan'
- sh ‘terraform plan’
- // sh ‘terraform destroy -auto-approve’
- sh ‘terraform apply -auto-approve’
+ sh 'terraform plan'
+ // sh ‘terraform destroy -auto-approve'
+ sh 'terraform apply -auto-approve'
 
 
  }
