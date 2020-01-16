@@ -10,22 +10,18 @@ pipeline {
       }
     }
 
- stage('Set Terraform path') {
+ stage('Check terraform version') {
  steps {
-  sh 'terraform —version'
+  sh "terraform -version"
   }
  }
 
  stage('Provision infrastructure') {
 
  steps {
- sh 'terraform init'
+ sh "terraform init"
 
-
- }
- }
-
-
-
- }
+  }
+}
+}
 }
