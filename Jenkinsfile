@@ -2,19 +2,19 @@ pipeline {
  agent any
 
  stages {
-  stage(‘Begin’) {
+  stage('Begin') {
     steps {
       echo "Job starting..."
       }
     }
 
- stage(‘Set Terraform path’) {
+ stage('Set Terraform path') {
  steps {
   sh ‘terraform — version’
   }
  }
 
- stage(‘Provision infrastructure’) {
+ stage('Provision infrastructure') {
 
  steps {
  sh ‘terraform init’
